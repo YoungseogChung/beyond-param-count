@@ -1,0 +1,35 @@
+#!/bin/bash
+
+sh distributed_train.sh 4 \
+  --model null \
+  --data-path /home/scratch/hf_datasets_cache \
+  --batch 512 \
+  --lr 3e-3 \
+  --epochs 800 \
+  --weight-decay 0.05 \
+  --sched cosine \
+  --input-size 224 \
+  --eval-crop-ratio 1.0 \
+  --reprob 0.0 \
+  --smoothing 0.0 \
+  --warmup-epochs 5 \
+  --drop 0.0 \
+  --seed 0 \
+  --opt fusedlamb \
+  --warmup-lr 1e-6 \
+  --mixup .8 \
+  --drop-path 0.2 \
+  --cutmix 1.0 \
+  --unscale-lr \
+  --repeated-aug \
+  --bce-loss \
+  --color-jitter 0.3 \
+  --ThreeAugment \
+  --data-set HF_IMNET \
+  --model-type smoe_base \
+  --num-experts 64 \
+  --moe-mlp-ratio 1 \
+  --vmap-model \
+  --output_dir smoe_vit_ne64 \
+  --pin-mem \
+  --num_workers 16 \
